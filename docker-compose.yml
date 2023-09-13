@@ -1,0 +1,11 @@
+version: '3'
+
+services:
+  mysql:
+    image: mysql
+    container_name: ORM_SEQUELIZE
+    environment:
+      - MYSQL_ROOT_PASSWORD=root
+      - MYSQL_DATABASE=ORMSEQUELIZE
+    ports:
+      - 3306:3306
