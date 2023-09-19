@@ -23,12 +23,6 @@ class UserRepository {
   }
 
   async Update(id, name, active, email, role) {
-    const result = await this.GetById(id);
-
-    if (!result) {
-      throw new Error("User Not Found");
-    }
-
     await User.update(
       {
         name,
@@ -47,12 +41,6 @@ class UserRepository {
   }
 
   async Delete(id) {
-    const result = await this.GetById(id);
-
-    if (!result) {
-      throw new Error("User Not Found");
-    }
-
     await User.destroy({
       where: {
         id: id,
