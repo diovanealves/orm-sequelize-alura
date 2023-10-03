@@ -26,7 +26,9 @@ class LevelService {
   async Update(id, description_level) {
     await this.GetById(id);
 
-    return await this.levelRepository.Update(id, description_level);
+    await this.levelRepository.Update(id, description_level);
+
+    return this.GetById(id);
   }
 
   async Delete(id) {

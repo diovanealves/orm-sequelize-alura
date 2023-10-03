@@ -26,11 +26,13 @@ class UserService {
   async Update(id, name, active, email, role) {
     await this.GetById(id);
 
-    return await this.userRepository.Update(id, name, active, email, role);
+    await this.userRepository.Update(id, name, active, email, role);
+
+    return await this.GetById(id);
   }
 
   async Delete(id) {
-    const existingUser = await this.GetById(id);
+    await this.GetById(id);
 
     return await this.userRepository.Delete(id);
   }

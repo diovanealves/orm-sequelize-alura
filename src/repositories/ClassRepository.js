@@ -6,13 +6,7 @@ class ClassRepository {
   }
 
   async getById(id) {
-    const result = await Class.findByPk(id);
-
-    if (!result) {
-      throw new Error("Class not found");
-    }
-
-    return result;
+    return await Class.findByPk(id);
   }
 
   async create(start_date, teacher_id, level_id) {

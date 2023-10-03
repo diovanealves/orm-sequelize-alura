@@ -10,7 +10,13 @@ class ClassService {
   }
 
   async getById(id) {
-    return await this.classRepository.getById(id);
+    const result = await this.classRepository.getById(id);
+
+    if (!result) {
+      throw new Error("Class not found");
+    }
+
+    return result;
   }
 
   async create(start_date, teacher_id, level_id) {

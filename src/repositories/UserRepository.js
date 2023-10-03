@@ -6,11 +6,7 @@ class UserRepository {
   }
 
   async GetById(id) {
-    return await User.findOne({
-      where: {
-        id,
-      },
-    });
+    return await User.findByPk(id);
   }
 
   async Create(name, active, email, role) {
@@ -23,7 +19,7 @@ class UserRepository {
   }
 
   async Update(id, name, active, email, role) {
-    await User.update(
+    return await User.update(
       {
         name,
         active,
@@ -36,8 +32,6 @@ class UserRepository {
         },
       }
     );
-
-    return this.GetById(id);
   }
 
   async Delete(id) {

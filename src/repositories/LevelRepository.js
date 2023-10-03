@@ -6,11 +6,7 @@ class LevelRepository {
   }
 
   async GetById(id) {
-    return await Level.findOne({
-      where: {
-        id,
-      },
-    });
+    return await Level.findByPk(id);
   }
 
   async Create(description_level) {
@@ -20,7 +16,7 @@ class LevelRepository {
   }
 
   async Update(id, description_level) {
-    await Level.update(
+    return await Level.update(
       {
         description_level,
       },
@@ -28,8 +24,6 @@ class LevelRepository {
         where: { id },
       }
     );
-
-    return await this.GetById(id);
   }
 
   async Delete(id) {
