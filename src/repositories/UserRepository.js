@@ -2,6 +2,10 @@ const { User } = require("../database/models");
 
 class UserRepository {
   async GetAll() {
+    return await User.scope("all").findAll();
+  }
+
+  async GetAllActive() {
     return await User.findAll();
   }
 

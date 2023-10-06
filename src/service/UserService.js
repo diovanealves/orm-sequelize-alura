@@ -9,6 +9,10 @@ class UserService {
     return await this.userRepository.GetAll();
   }
 
+  async GetAllActive() {
+    return await this.userRepository.GetAllActive();
+  }
+
   async GetById(id) {
     const result = await this.userRepository.GetById(id);
 

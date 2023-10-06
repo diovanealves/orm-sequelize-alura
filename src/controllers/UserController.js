@@ -15,6 +15,16 @@ class UserController {
     }
   }
 
+  async GetAllActive(req, res) {
+    try {
+      const result = await this.userService.GetAllActive();
+
+      return res.status(200).json(result);
+    } catch (error) {
+      return res.status(400).json({ error: error.message });
+    }
+  }
+
   async GetById(req, res) {
     try {
       const { id } = req.params;
