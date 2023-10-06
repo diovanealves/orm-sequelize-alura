@@ -42,7 +42,7 @@ class LevelController {
       const { description_level } = req.body;
 
       const result = await this.levelService.Update(id, description_level);
-      return res.status(200).json(result).json();
+      return res.status(200).json(result);
     } catch (error) {
       return res.status(400).json({ error: error.message });
     }
@@ -53,7 +53,9 @@ class LevelController {
       const { id } = req.params;
 
       await this.levelService.Delete(id);
-      return res.status(204).json();
+      return res
+        .status(200)
+        .json({ success: `id ${id} was successfully deleted` });
     } catch (error) {
       return res.status(400).json({ error: error.message });
     }

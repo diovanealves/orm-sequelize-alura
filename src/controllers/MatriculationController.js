@@ -57,7 +57,9 @@ class MatriculationController {
       const { matriculation_id } = req.params;
 
       await this.matriculationService.delete(matriculation_id);
-      return res.status(204).json();
+      return res
+        .status(200)
+        .json({ success: `id ${id} was successfully deleted` });
     } catch (error) {
       return res.status(400).json({ error: error.message });
     }

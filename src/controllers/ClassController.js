@@ -60,7 +60,9 @@ class ClassController {
       const { id } = req.params;
 
       await this.classService.delete(id);
-      return res.status(204).json();
+      return res
+        .status(200)
+        .json({ success: `id ${id} was successfully deleted` });
     } catch (error) {
       return res.status(400).json({ error: error.message });
     }

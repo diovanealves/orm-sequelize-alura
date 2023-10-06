@@ -61,7 +61,9 @@ class UserController {
       const { id } = req.params;
 
       await this.userService.Delete(id);
-      return res.status(204).json();
+      return res
+        .status(200)
+        .json({ success: `id ${id} was successfully deleted` });
     } catch (error) {
       return res.status(400).json({ error: error.message });
     }
