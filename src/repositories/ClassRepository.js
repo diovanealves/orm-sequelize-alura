@@ -1,27 +1,31 @@
 const { Class } = require("../database/models");
 
 class ClassRepository {
-  async getAll() {
+  async GetAll() {
     return await Class.findAll();
   }
 
-  async getById(id) {
+  async GetById(id) {
     return await Class.findByPk(id);
   }
 
-  async create(start_date, teacher_id, level_id) {
+  async Create(start_date, teacher_id, level_id) {
     return await Class.create({ start_date, teacher_id, level_id });
   }
 
-  async update(id, start_date, teacher_id, level_id) {
+  async Update(id, start_date, teacher_id, level_id) {
     return await Class.update(
       { start_date, teacher_id, level_id },
       { where: { id } }
     );
   }
 
-  async delete(id) {
+  async Delete(id) {
     return await Class.destroy({ where: { id } });
+  }
+
+  async Restore(id) {
+    return await Class.restore({ where: { id } });
   }
 }
 module.exports = ClassRepository;

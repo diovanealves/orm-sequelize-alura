@@ -9,7 +9,7 @@ class MatriculationController {
     try {
       const { student_id, matriculation_id } = req.params;
 
-      const result = await this.matriculationService.getByStudent(
+      const result = await this.matriculationService.GetByStudent(
         student_id,
         matriculation_id
       );
@@ -24,7 +24,7 @@ class MatriculationController {
       const { student_id } = req.params;
       const { status, class_id } = req.body;
 
-      const result = await this.matriculationService.create(
+      const result = await this.matriculationService.Create(
         student_id,
         status,
         class_id
@@ -40,7 +40,7 @@ class MatriculationController {
       const { student_id, matriculation_id } = req.params;
       const { status, class_id } = req.body;
 
-      const result = await this.matriculationService.update(
+      const result = await this.matriculationService.Update(
         matriculation_id,
         student_id,
         status,
@@ -56,10 +56,23 @@ class MatriculationController {
     try {
       const { matriculation_id } = req.params;
 
-      await this.matriculationService.delete(matriculation_id);
+      await this.matriculationService.Delete(matriculation_id);
       return res
         .status(200)
         .json({ success: `id ${id} was successfully deleted` });
+    } catch (error) {
+      return res.status(400).json({ error: error.message });
+    }
+  }
+
+  async Restore(req, res) {
+    try {
+      const { matriculation_id } = req.params;
+
+      await this.matriculationService.Restore(matriculation_id);
+      return res
+        .status(200)
+        .json({ success: `id ${id} has been successfully restored` });
     } catch (error) {
       return res.status(400).json({ error: error.message });
     }

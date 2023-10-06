@@ -35,11 +35,15 @@ class UserRepository {
   }
 
   async Delete(id) {
-    await User.destroy({
+    return await User.destroy({
       where: {
         id: id,
       },
     });
+  }
+
+  async Restore(id) {
+    return await User.restore({ where: { id } });
   }
 }
 

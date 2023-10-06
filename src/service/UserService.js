@@ -36,6 +36,10 @@ class UserService {
 
     return await this.userRepository.Delete(id);
   }
+
+  async Restore(id) {
+    return await this.userRepository.Restore(id);
+  }
 }
 
 module.exports = UserService;

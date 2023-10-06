@@ -27,9 +27,13 @@ class LevelRepository {
   }
 
   async Delete(id) {
-    await Level.destroy({
+    return await Level.destroy({
       where: { id },
     });
+  }
+
+  async Restore(id) {
+    return await Level.restore({ where: { id } });
   }
 }
 

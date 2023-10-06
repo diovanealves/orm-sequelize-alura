@@ -5,12 +5,12 @@ class ClassService {
     this.classRepository = new ClassRepository();
   }
 
-  async getAll() {
-    return await this.classRepository.getAll();
+  async GetAll() {
+    return await this.classRepository.GetAll();
   }
 
-  async getById(id) {
-    const result = await this.classRepository.getById(id);
+  async GetById(id) {
+    const result = await this.classRepository.GetById(id);
 
     if (!result) {
       throw new Error("Class not found");
@@ -19,22 +19,26 @@ class ClassService {
     return result;
   }
 
-  async create(start_date, teacher_id, level_id) {
-    return await this.classRepository.create(start_date, teacher_id, level_id);
+  async Create(start_date, teacher_id, level_id) {
+    return await this.classRepository.Create(start_date, teacher_id, level_id);
   }
 
-  async update(id, start_date, teacher_id, level_id) {
-    await this.getById(id);
+  async Update(id, start_date, teacher_id, level_id) {
+    await this.GetById(id);
 
-    await this.classRepository.update(id, start_date, teacher_id, level_id);
+    await this.classRepository.Update(id, start_date, teacher_id, level_id);
 
-    return await this.getById(id);
+    return await this.GetById(id);
   }
 
-  async delete(id) {
-    await this.getById(id);
+  async Delete(id) {
+    await this.GetById(id);
 
-    return await this.classRepository.delete(id);
+    return await this.classRepository.Delete(id);
+  }
+
+  async Restore(id) {
+    return await this.classRepository.Restore(id);
   }
 }
 

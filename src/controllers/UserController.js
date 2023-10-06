@@ -68,6 +68,19 @@ class UserController {
       return res.status(400).json({ error: error.message });
     }
   }
+
+  async Restore(req, res) {
+    try {
+      const { id } = req.params;
+
+      await this.userService.Restore(id);
+      return res
+        .status(200)
+        .json({ success: `id ${id} has been successfully restored` });
+    } catch (error) {
+      return res.status(400).json({ error: error.message });
+    }
+  }
 }
 
 module.exports = UserController;

@@ -12,6 +12,11 @@ router.post(
   "/user/:student_id/matriculation",
   matriculationController.create.bind(matriculationController)
 );
+router.post(
+  "/matriculation/:id/restore",
+  matriculationController.Restore.bind(matriculationController)
+);
+
 router.put(
   "/user/:student_id/matriculation/:matriculation_id",
   matriculationController.update.bind(matriculationController)

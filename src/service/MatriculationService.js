@@ -7,8 +7,8 @@ class MatriculationService {
     this.userService = new UserService();
   }
 
-  async getById(id) {
-    const result = await this.matriculationRepository.getById(id);
+  async GetById(id) {
+    const result = await this.matriculationRepository.GetById(id);
 
     if (!result) {
       throw new Error("Matriculation not found");
@@ -17,10 +17,10 @@ class MatriculationService {
     return result;
   }
 
-  async getByStudent(student_id, matriculation_id) {
+  async GetByStudent(student_id, matriculation_id) {
     await this.userService.GetById(student_id);
 
-    const result = await this.matriculationRepository.getByStudent(
+    const result = await this.matriculationRepository.GetByStudent(
       student_id,
       matriculation_id
     );
@@ -32,33 +32,37 @@ class MatriculationService {
     return result;
   }
 
-  async create(student_id, status, class_id) {
+  async Create(student_id, status, class_id) {
     await this.userService.GetById(student_id);
 
-    return await this.matriculationRepository.create(
+    return await this.matriculationRepository.Create(
       student_id,
       status,
       class_id
     );
   }
 
-  async update(matriculation_id, student_id, status, class_id) {
+  async Update(matriculation_id, student_id, status, class_id) {
     await this.getByStudent(student_id, matriculation_id);
 
-    await this.matriculationRepository.update(
+    await this.matriculationRepository.Update(
       matriculation_id,
       student_id,
       status,
       class_id
     );
 
-    return await this.getByStudent(student_id, matriculation_id);
+    return await this.GetByStudent(student_id, matriculation_id);
   }
 
-  async delete(matriculation_id) {
-    await this.getById(matriculation_id);
+  async Delete(matriculation_id) {
+    await this.GetById(matriculation_id);
 
-    return await this.matriculationRepository.delete(matriculation_id);
+    return await this.matriculationRepository.Delete(matriculation_id);
+  }
+
+  async Restore(matriculation_id) {
+    return await this.matriculationRepository.Restore(matriculation_id);
   }
 }
 

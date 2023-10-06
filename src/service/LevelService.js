@@ -36,6 +36,10 @@ class LevelService {
 
     return await this.levelRepository.Delete(id);
   }
+
+  async Restore(id) {
+    return await this.levelRepository.Restore(id);
+  }
 }
 
 module.exports = LevelService;
