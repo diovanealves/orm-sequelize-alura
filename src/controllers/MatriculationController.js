@@ -5,11 +5,11 @@ class MatriculationController {
     this.matriculationService = new MatriculationService();
   }
 
-  async getByStudent(req, res) {
+  async GetOneMatriculation(req, res) {
     try {
       const { student_id, matriculation_id } = req.params;
 
-      const result = await this.matriculationService.GetByStudent(
+      const result = await this.matriculationService.GetOneMatriculation(
         student_id,
         matriculation_id
       );
@@ -19,7 +19,7 @@ class MatriculationController {
     }
   }
 
-  async create(req, res) {
+  async Create(req, res) {
     try {
       const { student_id } = req.params;
       const { status, class_id } = req.body;
@@ -35,7 +35,7 @@ class MatriculationController {
     }
   }
 
-  async update(req, res) {
+  async Update(req, res) {
     try {
       const { student_id, matriculation_id } = req.params;
       const { status, class_id } = req.body;
@@ -52,7 +52,7 @@ class MatriculationController {
     }
   }
 
-  async delete(req, res) {
+  async Delete(req, res) {
     try {
       const { matriculation_id } = req.params;
 

@@ -6,11 +6,11 @@ const matriculationController = new MatriculationController();
 
 router.get(
   "/user/:student_id/matriculation/:matriculation_id",
-  matriculationController.getByStudent.bind(matriculationController)
+  matriculationController.GetOneMatriculation.bind(matriculationController)
 );
 router.post(
   "/user/:student_id/matriculation",
-  matriculationController.create.bind(matriculationController)
+  matriculationController.Create.bind(matriculationController)
 );
 router.post(
   "/matriculation/:id/restore",
@@ -19,11 +19,11 @@ router.post(
 
 router.put(
   "/user/:student_id/matriculation/:matriculation_id",
-  matriculationController.update.bind(matriculationController)
+  matriculationController.Update.bind(matriculationController)
 );
 router.delete(
   "/matriculation/:matriculation_id",
-  matriculationController.delete.bind(matriculationController)
+  matriculationController.Delete.bind(matriculationController)
 );
 
 module.exports = router;

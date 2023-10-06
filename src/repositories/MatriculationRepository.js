@@ -5,7 +5,7 @@ class MatriculationRepository {
     return await Matriculation.findByPk(id);
   }
 
-  async GetByStudent(student_id, matriculation_id) {
+  async GetOneMatriculation(student_id, matriculation_id) {
     return await Matriculation.findOne({
       where: {
         id: matriculation_id,

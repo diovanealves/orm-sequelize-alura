@@ -5,7 +5,7 @@ class ClassController {
     this.classService = new ClassService();
   }
 
-  async getAll(req, res) {
+  async GetAll(req, res) {
     try {
       const result = await this.classService.GetAll();
       return res.status(200).json(result);
@@ -14,7 +14,7 @@ class ClassController {
     }
   }
 
-  async getById(req, res) {
+  async GetById(req, res) {
     try {
       const { id } = req.params;
       const result = await this.classService.GetById(id);
@@ -24,7 +24,7 @@ class ClassController {
     }
   }
 
-  async create(req, res) {
+  async Create(req, res) {
     try {
       const { start_date, teacher_id, level_id } = req.body;
       const result = await this.classService.Create(
@@ -38,7 +38,7 @@ class ClassController {
     }
   }
 
-  async update(req, res) {
+  async Update(req, res) {
     try {
       const { id } = req.params;
       const { start_date, teacher_id, level_id } = req.body;
@@ -55,7 +55,7 @@ class ClassController {
     }
   }
 
-  async delete(req, res) {
+  async Delete(req, res) {
     try {
       const { id } = req.params;
 

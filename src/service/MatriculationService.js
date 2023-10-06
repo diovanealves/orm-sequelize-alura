@@ -17,10 +17,10 @@ class MatriculationService {
     return result;
   }
 
-  async GetByStudent(student_id, matriculation_id) {
+  async GetOneMatriculation(student_id, matriculation_id) {
     await this.userService.GetById(student_id);
 
-    const result = await this.matriculationRepository.GetByStudent(
+    const result = await this.matriculationRepository.GetOneMatriculation(
       student_id,
       matriculation_id
     );
