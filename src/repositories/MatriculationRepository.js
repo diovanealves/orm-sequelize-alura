@@ -1,4 +1,4 @@
-const { Matriculation } = require("../database/models");
+const { Matriculation, User } = require("../database/models");
 
 class MatriculationRepository {
   async GetById(id) {
@@ -12,6 +12,10 @@ class MatriculationRepository {
         student_id,
       },
     });
+  }
+
+  async GetMatriculations(pessoa) {
+    return await pessoa.getClassesEnrollment();
   }
 
   async Create(student_id, status, class_id) {

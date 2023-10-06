@@ -32,6 +32,12 @@ class MatriculationService {
     return result;
   }
 
+  async GetMatriculations(student_id) {
+    const pessoa = await this.userService.GetById(student_id);
+
+    return await this.matriculationRepository.GetMatriculations(pessoa);
+  }
+
   async Create(student_id, status, class_id) {
     await this.userService.GetById(student_id);
 

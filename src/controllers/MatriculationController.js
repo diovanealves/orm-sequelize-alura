@@ -19,6 +19,19 @@ class MatriculationController {
     }
   }
 
+  async GetMatriculations(req, res) {
+    try {
+      const { student_id } = req.params;
+
+      const result = await this.matriculationService.GetMatriculations(
+        student_id
+      );
+      return res.status(200).json(result);
+    } catch (error) {
+      return res.status(400).json({ error: error.message });
+    }
+  }
+
   async Create(req, res) {
     try {
       const { student_id } = req.params;

@@ -8,6 +8,10 @@ router.get(
   "/user/:student_id/matriculation/:matriculation_id",
   matriculationController.GetOneMatriculation.bind(matriculationController)
 );
+router.get(
+  "/user/:student_id/matriculation",
+  matriculationController.GetMatriculations.bind(matriculationController)
+);
 router.post(
   "/user/:student_id/matriculation",
   matriculationController.Create.bind(matriculationController)
