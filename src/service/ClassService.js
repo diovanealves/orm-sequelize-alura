@@ -5,8 +5,8 @@ class ClassService {
     this.classRepository = new ClassRepository();
   }
 
-  async GetAll() {
-    return await this.classRepository.GetAll();
+  async GetAll(where) {
+    return await this.classRepository.GetAll(where);
   }
 
   async GetById(id) {

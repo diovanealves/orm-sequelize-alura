@@ -1,4 +1,5 @@
 const ClassService = require("../service/ClassService");
+const { Op } = require("sequelize");
 
 class ClassController {
   constructor() {
@@ -6,8 +7,14 @@ class ClassController {
   }
 
   async GetAll(req, res) {
+    const { starting_date, end_date } = req.query;
+    const where = {};
+    starting_date || end_date ?  where.start_date = {} : null
+    starting_date ? where.start_date[Op.gte] = starting_date : null
+    end_date ? where.start_date[Op.lte] = end_date : null
+
     try {
-      const result = await this.classService.GetAll();
+      const result = await this.classService.GetAll(where);
       return res.status(200).json(result);
     } catch (error) {
       return res.status(400).json({ error: error.message });

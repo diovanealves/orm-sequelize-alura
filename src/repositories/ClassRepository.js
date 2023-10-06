@@ -1,8 +1,8 @@
 const { Class } = require("../database/models");
 
 class ClassRepository {
-  async GetAll() {
-    return await Class.findAll();
+  async GetAll(where) {
+    return await Class.findAll({where: where});
   }
 
   async GetById(id) {
