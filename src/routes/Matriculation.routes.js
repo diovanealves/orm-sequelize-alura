@@ -12,6 +12,14 @@ router.get(
   "/user/:student_id/matriculation",
   matriculationController.GetMatriculations.bind(matriculationController)
 );
+router.get(
+  "/user/matriculation/:class_id/confirmed",
+  matriculationController.GetMatriculationsByClass.bind(matriculationController)
+);
+router.get(
+  "/user/matriculation/full",
+  matriculationController.GetFullClass.bind(matriculationController)
+);
 router.post(
   "/user/:student_id/matriculation",
   matriculationController.Create.bind(matriculationController)

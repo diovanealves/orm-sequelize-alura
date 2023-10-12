@@ -32,6 +32,28 @@ class MatriculationController {
     }
   }
 
+  async GetMatriculationsByClass(req, res) {
+    try {
+      const { class_id } = req.params;
+
+      const result = await this.matriculationService.GetMatriculationsByClass(class_id)
+      return res.status(200).json(result)
+    } catch (error) {
+      return res.status(400).json({ error: error.message });
+    }
+  }
+
+  async GetFullClass(req, res) {
+    try {
+      const limitedClass = 2
+
+      const result = await this.matriculationService.GetFullClass(limitedClass)
+      return res.status(200).json(result)
+    } catch (error) {
+      return res.status(400).json({ error: error.message });
+    }
+  }
+
   async Create(req, res) {
     try {
       const { student_id } = req.params;

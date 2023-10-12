@@ -1,4 +1,5 @@
-const { Matriculation, User } = require("../database/models");
+const { Matriculation } = require("../database/models");
+const Sequelize = require("sequelize")
 
 class MatriculationRepository {
   async GetById(id) {
@@ -16,6 +17,28 @@ class MatriculationRepository {
 
   async GetMatriculations(pessoa) {
     return await pessoa.getClassesEnrollment();
+  }
+
+  async GetMatriculationsByClass(class_id){
+    return await Matriculation.findAndCountAll({
+      where: {
+        class_id,
+        status: "confirmado"
+      },
+      limit: 20,
+      order: [["student_id", "ASC"]]
+    })
+  }
+
+  async GetFullClass(limitedClass){
+    return await Matriculation.findAndCountAll({
+      where: {
+        status: "confirmado"
+      },
+      attributes: ["class_id"],
+      group: ['class_id'],
+      having: Sequelize.literal(`count(class_id) >= ${limitedClass}`)
+    })
   }
 
   async Create(student_id, status, class_id) {

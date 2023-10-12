@@ -38,6 +38,14 @@ class MatriculationService {
     return await this.matriculationRepository.GetMatriculations(pessoa);
   }
 
+  async GetMatriculationsByClass(class_id){
+    return await this.matriculationRepository.GetMatriculationsByClass(class_id)
+  }
+
+  async GetFullClass(limitedClass){
+    return await this.matriculationRepository.GetFullClass(limitedClass)
+  }
+
   async Create(student_id, status, class_id) {
     await this.userService.GetById(student_id);
 
