@@ -91,6 +91,17 @@ class UserController {
       return res.status(400).json({ error: error.message });
     }
   }
+
+  async CancelUser(req,res){
+    try {
+      const { id } = req.params;
+
+      const result = await this.userService.CancelUser(id)
+      return res.status(200).json({success: `Matrículas referente ao estudante ${id} foi cancelado`}) 
+    } catch (error) {
+      return res.status(400).json({ error: error.message });
+    }
+  }
 }
 
 module.exports = UserController;

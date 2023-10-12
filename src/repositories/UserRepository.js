@@ -1,4 +1,4 @@
-const { User } = require("../database/models");
+const {sequelize, User, Matriculation } = require("../database/models");
 
 class UserRepository {
   async GetAll() {
@@ -48,6 +48,13 @@ class UserRepository {
 
   async Restore(id) {
     return await User.restore({ where: { id } });
+  }
+
+  async CancelUser(id){
+    return await  sequelize.transaction(async (transaction) => {
+      await User.update({active: false}, {where: {id}}, {transaction})
+      await Matriculation.update({status: 'cancelado'}, {where: {student_id: id}}, {transaction})
+    })
   }
 }
 
